@@ -1,10 +1,10 @@
 import Dependencies.*
-import microsites.ExtraMdFileConfig
+// import microsites.ExtraMdFileConfig
 import scala.collection.immutable
 
 ThisBuild / name               := "fs2-rabbit"
-ThisBuild / scalaVersion       := "2.13.16"
-ThisBuild / crossScalaVersions := List("2.13.16", "3.3.4", "3.6.3")
+ThisBuild / scalaVersion       := "3.6.3"
+// ThisBuild / crossScalaVersions := List("2.13.16", "3.3.4", "3.6.3")
 ThisBuild / versionScheme      := Some("semver-spec")
 ThisBuild / organization       := "dev.profunktor"
 ThisBuild / homepage           := Some(url("https://fs2-rabbit.profunktor.dev/"))
@@ -101,7 +101,7 @@ lazy val noPublish = List(
 lazy val `fs2-rabbit-root`: Project = project
   .in(file("."))
   .disablePlugins(MimaPlugin)
-  .aggregate(`fs2-rabbit`, `fs2-rabbit-circe`, tests, examples, microsite, `fs2-rabbit-testkit`)
+  .aggregate(`fs2-rabbit`, `fs2-rabbit-circe`, `fs2-rabbit-testkit`)
   .settings(noPublish)
 
 lazy val `fs2-rabbit`: Project = project
@@ -145,46 +145,46 @@ lazy val `fs2-rabbit-testkit`: Project = project
   .enablePlugins(AutomateHeaderPlugin)
   .dependsOn(`fs2-rabbit`)
 
-lazy val microsite: Project = project
-  .in(file("site"))
-  .enablePlugins(MicrositesPlugin)
-  .disablePlugins(MimaPlugin)
-  .settings(commonSettings: _*)
-  .settings(noPublish)
-  .settings(
-    micrositeName               := "Fs2 Rabbit",
-    micrositeDescription        := "RabbitMQ stream-based client",
-    micrositeAuthor             := "ProfunKtor",
-    micrositeGithubOwner        := "profunktor",
-    micrositeGithubRepo         := "fs2-rabbit",
-    micrositeBaseUrl            := "",
-    micrositeExtraMdFiles       := Map(
-      file("README.md")          -> ExtraMdFileConfig(
-        "index.md",
-        "home",
-        Map("title" -> "Home", "position" -> "0")
-      ),
-      file("CODE_OF_CONDUCT.md") -> ExtraMdFileConfig(
-        "CODE_OF_CONDUCT.md",
-        "page",
-        Map("title" -> "Code of Conduct")
-      )
-    ),
-    micrositeExtraMdFilesOutput := (Compile / resourceManaged).value / "jekyll",
-    micrositeGitterChannel      := true,
-    micrositeGitterChannelUrl   := "profunktor-dev/fs2-rabbit",
-    micrositePushSiteWith       := GitHub4s,
-    micrositeGithubToken        := sys.env.get("GITHUB_TOKEN"),
-    scalacOptions --= List(
-      "-Werror",
-      "-Xfatal-warnings",
-      "-Ywarn-unused-import",
-      "-Ywarn-numeric-widen",
-      "-Ywarn-dead-code",
-      "-Xlint:-missing-interpolator,_"
-    )
-  )
-  .dependsOn(`fs2-rabbit`, `fs2-rabbit-circe`, `examples`)
+//lazy val microsite: Project = project
+//  .in(file("site"))
+//  .enablePlugins(MicrositesPlugin)
+//  .disablePlugins(MimaPlugin)
+//  .settings(commonSettings: _*)
+//  .settings(noPublish)
+//  .settings(
+//    micrositeName               := "Fs2 Rabbit",
+//    micrositeDescription        := "RabbitMQ stream-based client",
+//    micrositeAuthor             := "ProfunKtor",
+//    micrositeGithubOwner        := "profunktor",
+//    micrositeGithubRepo         := "fs2-rabbit",
+//    micrositeBaseUrl            := "",
+//    micrositeExtraMdFiles       := Map(
+//      file("README.md")          -> ExtraMdFileConfig(
+//        "index.md",
+//        "home",
+//        Map("title" -> "Home", "position" -> "0")
+//      ),
+//      file("CODE_OF_CONDUCT.md") -> ExtraMdFileConfig(
+//        "CODE_OF_CONDUCT.md",
+//        "page",
+//        Map("title" -> "Code of Conduct")
+//      )
+//    ),
+//    micrositeExtraMdFilesOutput := (Compile / resourceManaged).value / "jekyll",
+//    micrositeGitterChannel      := true,
+//    micrositeGitterChannelUrl   := "profunktor-dev/fs2-rabbit",
+//    micrositePushSiteWith       := GitHub4s,
+//    micrositeGithubToken        := sys.env.get("GITHUB_TOKEN"),
+//    scalacOptions --= List(
+//      "-Werror",
+//      "-Xfatal-warnings",
+//      "-Ywarn-unused-import",
+//      "-Ywarn-numeric-widen",
+//      "-Ywarn-dead-code",
+//      "-Xlint:-missing-interpolator,_"
+//    )
+//  )
+//  .dependsOn(`fs2-rabbit`, `fs2-rabbit-circe`, `examples`)
 
 // CI build
 addCommandAlias("buildFs2Rabbit", ";clean;+test;mdoc")

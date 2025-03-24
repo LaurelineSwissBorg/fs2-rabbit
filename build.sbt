@@ -3,7 +3,7 @@ import Dependencies.*
 import scala.collection.immutable
 
 ThisBuild / name               := "fs2-rabbit"
-ThisBuild / scalaVersion       := "3.6.3"
+ThisBuild / scalaVersion       := "3.6.4"
 // ThisBuild / crossScalaVersions := List("2.13.16", "3.3.4", "3.6.3")
 ThisBuild / versionScheme      := Some("semver-spec")
 ThisBuild / organization       := "dev.profunktor"

@@ -2,14 +2,14 @@ import Dependencies.*
 // import microsites.ExtraMdFileConfig
 import scala.collection.immutable
 
-ThisBuild / name               := "fs2-rabbit"
-ThisBuild / scalaVersion       := "3.6.4"
+ThisBuild / name          := "fs2-rabbit"
+ThisBuild / scalaVersion  := "3.6.4"
 // ThisBuild / crossScalaVersions := List("2.13.16", "3.3.4", "3.6.3")
-ThisBuild / versionScheme      := Some("semver-spec")
-ThisBuild / organization       := "dev.profunktor"
-ThisBuild / homepage           := Some(url("https://fs2-rabbit.profunktor.dev/"))
-ThisBuild / licenses           := List(License.Apache2)
-ThisBuild / developers         := List(
+ThisBuild / versionScheme := Some("semver-spec")
+ThisBuild / organization  := "dev.profunktor"
+ThisBuild / homepage      := Some(url("https://fs2-rabbit.profunktor.dev/"))
+ThisBuild / licenses      := List(License.Apache2)
+ThisBuild / developers    := List(
   Developer(
     "gvolpe",
     "Gabriel Volpe",
